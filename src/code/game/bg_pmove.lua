@@ -30,7 +30,6 @@ Handles both ground friction and water friction
 ]]
 
 local PM = {}
-print("Loaded perfectly")
 
 function PM:Friction(): {any}
 	local vec: Vector3;
