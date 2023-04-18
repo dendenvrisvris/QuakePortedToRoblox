@@ -1,57 +1,15 @@
---// reference: p = player, pm = playerModel or character
 local p =game.Players.LocalPlayer
 local pm  =p.Character or p.CharacterAdded:Wait();
 
-local root = pm:WaitForChild("RootPart") or p.CharacterAdded:Wait();
-
---// movement parameters
-local pm_stopspeed: number = 100;
-local	pm_duckScale: number = 0.25;
-local	pm_swimScale = 0.50;
-local	pm_wadeScale = 0.70;
-
-local	pm_accelerate: number = 10.0;
-local	pm_airaccelerate: number = 1.0;
-local	pm_wateraccelerate: number = 4.0;
-local	pm_flyaccelerate: number = 8.0;
-
-local	pm_friction: number = 6.0;
-local	pm_waterfriction: number = 1.0;
-local	pm_flightfriction: number = 3.0;
-local	pm_spectatorfriction: number = 5.0;
-
-local c_pmove: number = 0;
-
---[[
-==================
-PM_Friction
-Handles both ground friction and water friction
-==================
-]]
-
-function PM_Friction(): {any}
-	local vec: Vector3;
-	local vel: number;
-	local speed: number, newspeed: number, control: number
-	local drop: number;
-	
-	
-end
-
-
---[[
-==============
-PM_Accelerate
-Handles user intended acceleration
-==============
-]]
+local root: BasePart = pm:WaitForChild("HumanoidRootPart") or p.CharacterAdded:Wait();
 
 function PM_Accelerate(wishdir: Vector3, wishspeed: number, accel: number, deltaTime)
-	--// function made taking reference of: https://github.com/IsaiahKelly/quake3-movement-for-unity/
+	--// function made taking reference of: https://github.com/IsaiahKelly/quake3-movement-for-unity/blob/master/Quake3Movement/Scripts/Q3PlayerController.cs
 	--// q2 style
+	print("ok")
 	local i: number;
-	local addspeed: Vector3 accelspeed: Vector3, currentspeed: Vector3;
-	currentspeed = Vector3:Dot(root.AssemblyLinearVelocity, wishdir);
+	local addspeed: Vector3, accelspeed: Vector3, currentspeed: Vector3;
+	currentspeed = (root.AssemblyLinearVelocity):Dot(wishdir)
 	addspeed = wishdir - currentspeed;
 
 	if (addspeed <= 0) then
@@ -67,3 +25,9 @@ function PM_Accelerate(wishdir: Vector3, wishspeed: number, accel: number, delta
 
 	--// movement acceleration on test
 end
+
+game["Run Service"].RenderStepped:Connect(function(dt)
+	print(PM_Accelerate(root.CFrame.LookVector,100,0,dt))
+end)
+
+PM_Accelerate(Vector3.new(0,0,0),0,0,tick())

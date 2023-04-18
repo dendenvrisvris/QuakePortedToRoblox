@@ -6,6 +6,10 @@
     "ReplicatedStorage": {
       "Shared": {
         "$path": "src/shared"
+      },
+
+      "code": {
+        "$path": "src/code"
       }
     },
 
@@ -22,6 +26,8 @@
         }
       }
     },
+
+
 
     "Workspace": {
       "$properties": {
