@@ -10,3 +10,7 @@ and a lot of contribution is needed.
 
 - Thanks to [Quake III Arena](https://github.com/id-Software/Quake-III-Arena) source code, we are able to replicate some stuff
 that the game has, this gives us a very big help, credits to id-Software.
+
+### What stage we are on?
+
+- We need to do first the QuakeClient completely.
