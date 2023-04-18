@@ -1,3 +1,9 @@
+--// IGNORE
+--// IGNORE
+--// IGNORE
+--// IGNORE
+
+
 local p =game.Players.LocalPlayer
 local pm  =p.Character or p.CharacterAdded:Wait();
 
