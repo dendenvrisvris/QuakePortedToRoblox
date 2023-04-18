@@ -2,6 +2,8 @@
 local p =game.Players.LocalPlayer
 local pm  =p.Character or p.CharacterAdded:Wait();
 
+local root = pm:WaitForChild("RootPart") or p.CharacterAdded:Wait();
+
 --// movement parameters
 local pm_stopspeed: number = 100;
 local	pm_duckScale: number = 0.25;
@@ -44,11 +46,11 @@ Handles user intended acceleration
 ==============
 ]]
 
-function PM_Accelerate(wishdir, wishspeed, accel)
+function PM_Accelerate(wishdir: Vector3, wishspeed: number, accel: number)
 	
 	--// q2 style
 	local i: number;
 	local addspeed: number, accelspeed: number, currentspeed: number
 	
-	currentspeed = 
+	currentspeed = root.AssemblyLinearVelocity
 end
