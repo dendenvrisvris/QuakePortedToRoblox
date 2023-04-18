@@ -65,5 +65,5 @@ function PM_Accelerate(wishdir: Vector3, wishspeed: number, accel: number, delta
 
 	root:ApplyImpulse(Vector3.new(accelspeed * wishdir.x, accelspeed * wishdir.y, 0));
 
-	--// movement
+	--// movement acceleration on test
 end
