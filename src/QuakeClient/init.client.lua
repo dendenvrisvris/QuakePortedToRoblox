@@ -35,7 +35,7 @@ function PM_Friction(): {any}
 	local speed: number, newspeed: number, control: number
 	local drop: number;
 	
-	vel = pm > ps
+	
 end
 
 
