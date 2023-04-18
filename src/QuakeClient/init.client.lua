@@ -46,11 +46,24 @@ Handles user intended acceleration
 ==============
 ]]
 
-function PM_Accelerate(wishdir: Vector3, wishspeed: number, accel: number)
-	
+function PM_Accelerate(wishdir: Vector3, wishspeed: number, accel: number, deltaTime)
+	--// function made taking reference of: https://github.com/IsaiahKelly/quake3-movement-for-unity/
 	--// q2 style
 	local i: number;
-	local addspeed: number, accelspeed: number, currentspeed: number
-	
-	currentspeed = root.AssemblyLinearVelocity
+	local addspeed: Vector3 accelspeed: Vector3, currentspeed: Vector3;
+	currentspeed = Vector3:Dot(root.AssemblyLinearVelocity, wishdir);
+	addspeed = wishdir - currentspeed;
+
+	if (addspeed <= 0) then
+		return
+	end
+
+	accelspeed = accel * deltaTime * wishspeed;
+	if (accelspeed > addspeed) then
+		accelspeed = addspeed;
+	end
+
+	root:ApplyImpulse(Vector3.new(accelspeed * wishdir.x, accelspeed * wishdir.y, 0));
+
+	--// movement
 end
